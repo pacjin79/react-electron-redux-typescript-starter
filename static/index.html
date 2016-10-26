@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react typescript starter pack</title>
+</head>
+<body>
+<div id="bootstrapContainer">
+    <script></script>
+    <!--Added Empty Script tag to avoid a bug caused by webpack-dev-server when it tries to rewrite the script -->
+</div>
+<script>
+    {
+        var script = document.createElement('script');
+        var port = process.env.PORT || 9090;
+        script.src = (process.env.HOT) ? `http://localhost:${port}/build/bundle.js` : '../build/bundle.js';
+        document.write(script.outerHTML);
+    }
+</script>
+</body>
