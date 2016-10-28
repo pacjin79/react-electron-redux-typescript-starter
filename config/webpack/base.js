@@ -39,13 +39,6 @@ const baseConfig = {
 		filename: 'bundle.js'
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
-		/*new HtmlWebpackPlugin({
-			inject: true,
-			excludeChunks: ['test'],
-			template: path.join(staticPath, "index.html")
-		}),*/
 		new webpack.ProvidePlugin({
 			$: "jquery",
 			jQuery: "jquery"

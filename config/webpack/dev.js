@@ -20,6 +20,7 @@ devConfig.debug = true;
 devConfig.output.publicPath = `http://localhost:${port}/build/`;
 
 devConfig.plugins = _.concat(devConfig.plugins, [
+	new webpack.optimize.OccurenceOrderPlugin(),
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NoErrorsPlugin(),
 	new webpack.DefinePlugin({
