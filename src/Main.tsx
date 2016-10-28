@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import '../static/themes/default/app.less';
 
 class Main extends React.Component<{}, void> {
 
