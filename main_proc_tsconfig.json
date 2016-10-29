@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "types": [
+        "node"
+    ],
+    "target": "es5",
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "main"
+  },
+  "include": [
+     "main_ts/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "main"
+  ]
+}

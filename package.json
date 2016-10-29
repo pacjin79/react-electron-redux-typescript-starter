@@ -6,8 +6,9 @@
   "scripts": {
     "build": "NODE_ENV=production node_modules/webpack/bin/webpack.js --config config/webpack/prod.js --progress --profile --colors",
     "startDev": "cross-env NODE_ENV=development node devServer.js",
-    "startHot": "cross-env HOT=1 NODE_ENV=development electron ./src/app.js",
-    "dev": "concurrently --kill-others \"yarn run startDev\" \"yarn run startHot\""
+    "startHot": "cross-env HOT=1 NODE_ENV=development electron ./main/entry.js",
+    "kickoff": "concurrently --kill-others \"yarn run startDev\" \"yarn run startHot\"",
+    "dev": "node run.js"
   },
   "author": "Leo Jin",
   "license": "MIT",
@@ -47,6 +48,7 @@
   },
   "dependencies": {
     "@types/async": "^2.0.32",
+    "@types/bluebird": "^3.0.35",
     "@types/electron": "^1.4.24",
     "@types/immutable": "^3.8.4",
     "@types/jquery": "^2.0.32",
@@ -69,8 +71,11 @@
     "@types/request": "^0.0.32",
     "@types/reselect": "^2.0.27",
     "async": "^2.1.2",
+    "bluebird": "^3.4.6",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "formsy-react": "^0.18.1",
+    "formsy-react-components": "^0.8.1",
     "immutable": "^3.8.1",
     "jquery": "^3.1.1",
     "lodash": "^4.16.2",
