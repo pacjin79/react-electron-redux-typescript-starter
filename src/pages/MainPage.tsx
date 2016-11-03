@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { Panel, Col, Button, Modal } from 'react-bootstrap';
+import {
+    Panel, Col, Row, Button, Modal, ListGroup, ListGroupItem,
+    Navbar, Nav, NavItem, Dropdown, MenuItem, Glyphicon
+} from 'react-bootstrap';
 import * as _ from 'lodash';
 import * as Electron from 'electron';
 import * as Formsy from 'formsy-react';
 import { Input } from 'formsy-react-components';
+import '../../static/themes/default/app.less'; //TODO: THIS SHOULD BE DRIVEN BY CONFIG
 
 const remote = Electron.remote;
 
@@ -24,13 +28,14 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
         };
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
+        this.onSideMenuClick = this.onSideMenuClick.bind(this);
     }
 
     onClick(e: React.SyntheticEvent<any>) {
         e.preventDefault();
         const form = this.refs['form'] as Formsy.IFormsyInstance;
         const currentValues = form.getCurrentValues();
-        console.log('current val = ',currentValues);
+        console.log('current val = ', currentValues);
         const ioUtils = remote.require('./local/IOUtils');
         ioUtils.getFileNamesFromDirectory(currentValues.path).then((fileNames: string[]) => {
             this.setState({
@@ -40,6 +45,10 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
         });
     }
 
+    onSideMenuClick(e: React.SyntheticEvent<any>) {
+        e.preventDefault();
+    }
+
     onHide() {
         this.state.showModal = false;
         this.setState(this.state);
@@ -47,35 +56,55 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
 
     render() {
         return (
-            <div className="container">
-                <Col xs={12}>
-                    <Panel header="Electron Reajct Starter Pack">
-                        Greetings from pacjin79!!!!
-                        <Formsy.Form ref="form">
-                            <Input layout="vertical"
-                                   disabled={false} name="path" 
-                                   label="Enter Directory Path"
-                                   type="text" />
-                            <Button onClick={this.onClick}>Click Me!</Button>
-                        </Formsy.Form>
-                    </Panel>
-                    <Modal onHide={this.onHide} show={this.state.showModal}>
-                        <Modal.Header closeButton>
-                            <Modal.Title id="modal-title">Files </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            {this.renderModalBody(this.state.modalContent)}
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.onHide}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </Col>
+            <div id="wrapper">
+                <div>
+                    {this.renderTopNavBar()}
+                </div>
+                <div className="pageWrapper">
+                    <div className="container-fluid">
+                       {this.props.children}
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 
-    renderModalBody(content:string[]){
+    renderTopNavBar() {
+
+        const dropdownProps = {
+            id: "settings-dropdown",
+            componentClass: "li"
+        };
+
+        return (
+            <Navbar fluid={true}
+                fixedTop={true}
+                bsStyle="inverse"
+                className="navigation-clean">
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a href='#'>Opsie Design Studio</a>
+                    </Navbar.Brand>
+                </Navbar.Header>
+                <Nav pullRight>
+                    <NavItem href="#">Product</NavItem>
+                    <NavItem href="#">Flow</NavItem>
+                    <NavItem href="#">Component</NavItem>
+                    <Dropdown {...dropdownProps}>
+                        <Dropdown.Toggle useAnchor>
+                            <Glyphicon glyph="cog" style={{ marginRight: "5px" }} />
+                            Settings
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <MenuItem>Action</MenuItem>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Nav>
+            </Navbar>
+        );
+    }
+
+    renderModalBody(content: string[]) {
         const contentUi: Array<React.ReactNode> = [];
         _.each(content, (fileName) => {
             contentUi.push(

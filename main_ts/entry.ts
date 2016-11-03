@@ -4,8 +4,6 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import async = require('async');
 
-//interface AsyncResultCallback<T> { (err: Error, result: T): void; }
-
 let menu: any, template: any, mainWindow: Electron.BrowserWindow = null;
 
 if (process.env.NODE_ENV === 'development') {
@@ -72,8 +70,8 @@ function createWindow(callback?: AsyncResultCallback<string>) {
 
     mainWindow = new BrowserWindow({
         show: false,
-        width: 800,
-        height: 600
+        width: 900,
+        height: 800
     });
 
     const indexUrl = path.join(__dirname, "../static" + "/index.html");

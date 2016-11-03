@@ -4,17 +4,17 @@ import {Store} from "redux";
 import {IAppState} from "./types";
 import {PlainRoute} from 'react-router';
 import MainPage from "./pages/MainPage";
+import ProductMaingPage from './pages/product/ProductMaingPage';
 import {ReduxConfigDev} from '../config/redux/dev';
 import {ReduxConfigProd} from '../config/redux/prod';
 import RootComponentDev from 'RootComponentDev';
-import Main from "./Main";
 
 const rootRoute:PlainRoute = {
     path: '/',
     indexRoute: {
-        component: MainPage
+        component: ProductMaingPage
     },
-    component: Main
+    component: MainPage
 };
 
 const initialState:IAppState = {
