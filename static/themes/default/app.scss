@@ -1,0 +1,92 @@
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '~font-awesome/scss/font-awesome.scss';
+@import 'navigation.scss';
+@import 'feature-boxed.scss';
+
+.pageWrapper {
+  margin-top:85px;
+}
+
+.sideContainer {
+  padding-top:10px;
+}
+
+button.list-group-item {
+  background-color:#333;
+  color:#fff;
+}
+
+div.input-group-addon {
+  background-color:#333;
+  color:#fff;
+}
+
+.noTopMargin {
+  margin-top:0px;
+}
+
+@media (min-width:768px) {
+  div.contentWrapper {
+    padding-top:10px;
+    padding-left:60px;
+    padding-right:60px;
+  }
+}
+
+@media (min-width:1200px) {
+  div.contentWrapper {
+    padding-top:10px;
+    padding-left:100px;
+    padding-right:100px;
+  }
+}
+
+div.input-group {
+  margin-bottom:10px;
+}
+
+button i.glyphicon {
+  margin-right:6px;
+}
+
+div.input-group-addon i.glyphicon {
+  margin-right:10px;
+}
+
+.noMargin {
+  margin:0;
+}
+
+.nav-tabs > li.active > a {
+  background-color:#8f8f8f;
+  color:#fff;
+}
+
+form.form-inline .checkbox {
+  margin-right:10px;
+}
+
+div.checkbox > label.control-label > input {
+  margin-right:10px;
+}
+
+.features-boxed .features {
+  padding:20px 0 0 0;
+}
+
+.features .item .box {
+  padding:15px;
+  min-height:296px;
+}
+
+.features {
+  background-color:#222;
+}
+
+button.btn.btn-primary.off {
+  background-image:none;
+  background-color:#8f8f8f;
+  border-color:#8f8f8f;
+}
+

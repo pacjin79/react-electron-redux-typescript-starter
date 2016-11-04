@@ -7,8 +7,7 @@ import * as _ from 'lodash';
 import * as Electron from 'electron';
 import * as Formsy from 'formsy-react';
 import { Input } from 'formsy-react-components';
-import '../../static/themes/default/app.less'; //TODO: THIS SHOULD BE DRIVEN BY CONFIG
-
+import '../../static/themes/default/less/app.less'; //TODO: THIS SHOULD BE DRIVEN BY CONFIG
 const remote = Electron.remote;
 
 interface IMainPageProps {

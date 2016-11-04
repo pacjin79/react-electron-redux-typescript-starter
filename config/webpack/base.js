@@ -52,9 +52,10 @@ const baseConfig = {
 			},
 			{test: /\.css?$/, loader: "style!css"},
 			{test: /\.less$/, loader: 'style!css!less'},
+			{test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
 			{
 				test: /\.scss$/,
-				loader: "style-loader!raw-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+				loader: "style-loader!raw-loader!sass-loader"
 			},
 			{
 				test: /.*\.(png|gif|svg)$/i,
@@ -76,6 +77,13 @@ const baseConfig = {
 				loader: "file"
 			}
 		]
+	},
+	sassLoader: {
+		includePaths: [
+			path.resolve(__dirname, "./node_modules/compass-mixins/lib"),
+			path.resolve(__dirname, "./node_modules/bootstrap-sass/assets/stylesheets")
+		],
+		outputStyle: "expended"
 	},
 	node: {
 		__dirname: false,
