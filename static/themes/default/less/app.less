@@ -2,6 +2,7 @@
 @import '~font-awesome/less/font-awesome.less';
 @import 'navigation.less';
 @import 'feature-boxed.less';
+@import './vars.less';
 
 .pageWrapper {
   margin-top:85px;
@@ -12,12 +13,12 @@
 }
 
 button.list-group-item {
-  background-color:#333;
+  background-color: @mainBgColor;
   color:#fff;
 }
 
 div.input-group-addon {
-  background-color:#333;
+  background-color: @mainBgColor;
   color:#fff;
 }
 
@@ -25,7 +26,7 @@ div.input-group-addon {
   margin-top:0px;
 }
 
-@media (min-width:768px) {
+@media (min-width:@screen-sm) {
   div.contentWrapper {
     padding-top:10px;
     padding-left:60px;
@@ -33,16 +34,16 @@ div.input-group-addon {
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width:@screen-lg) {
   div.contentWrapper {
-    padding-top:10px;
+    padding-top:@padding-sm;
     padding-left:100px;
     padding-right:100px;
   }
 }
 
 div.input-group {
-  margin-bottom:10px;
+  margin-bottom:@padding-sm;
 }
 
 button i.glyphicon {
@@ -50,7 +51,7 @@ button i.glyphicon {
 }
 
 div.input-group-addon i.glyphicon {
-  margin-right:10px;
+  margin-right:@padding-sm;
 }
 
 .noMargin {
@@ -58,16 +59,16 @@ div.input-group-addon i.glyphicon {
 }
 
 .nav-tabs > li.active > a {
-  background-color:#8f8f8f;
+  background-color:@gray-light;
   color:#fff;
 }
 
 form.form-inline .checkbox {
-  margin-right:10px;
+  margin-right:@padding-sm;
 }
 
 div.checkbox > label.control-label > input {
-  margin-right:10px;
+  margin-right:@padding-sm;
 }
 
 .features-boxed .features {
@@ -80,12 +81,12 @@ div.checkbox > label.control-label > input {
 }
 
 .features {
-  background-color:#222;
+  background-color: @mainBgColor;
 }
 
 button.btn.btn-primary.off {
   background-image:none;
-  background-color:#8f8f8f;
-  border-color:#8f8f8f;
+  background-color:@gray-dark;
+  border-color:@gray-dark;
 }
 

@@ -6,11 +6,15 @@ import {
 import * as _ from 'lodash';
 import * as Electron from 'electron';
 import * as Formsy from 'formsy-react';
+import { Link } from 'react-router';
 import { Input } from 'formsy-react-components';
+import { connect, ComponentDecorator, Dispatch } from 'react-redux';
+import { push } from 'react-router-redux';
 import '../../static/themes/default/less/app.less'; //TODO: THIS SHOULD BE DRIVEN BY CONFIG
 const remote = Electron.remote;
 
 interface IMainPageProps {
+    navigate: (path: string) => void;
 }
 
 interface IMainPageState {
@@ -28,6 +32,18 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
         this.onSideMenuClick = this.onSideMenuClick.bind(this);
+        this.onNavItemSelect = this.onNavItemSelect.bind(this);
+    }
+
+    onNavItemSelect(path: any) {
+        //this.props.navigate(key);
+        if (typeof path === 'string') {
+            console.log(`clicked and key = ${path}`);
+            this.props.navigate(path);
+        } else {
+            // console.error("path must be a string");
+            throw new Error("path must be string");
+        }
     }
 
     onClick(e: React.SyntheticEvent<any>) {
@@ -61,7 +77,7 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
                 </div>
                 <div className="pageWrapper">
                     <div className="container-fluid">
-                       {this.props.children}
+                        {this.props.children}
                     </div>
                 </div>
             </div>
@@ -86,7 +102,8 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav pullRight>
-                    <NavItem href="#">Product</NavItem>
+                    <NavItem eventKey={"/"} onSelect={this.onNavItemSelect}>Packages</NavItem>                
+                    <NavItem eventKey={"/product"} onSelect={this.onNavItemSelect}>Product</NavItem>
                     <NavItem href="#">Flow</NavItem>
                     <NavItem href="#">Component</NavItem>
                     <Dropdown {...dropdownProps}>
@@ -119,4 +136,21 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
     }
 }
 
-export default MainPage;
+const mapStateToProps = (state: any, ownProps: any) => {
+    return {
+    };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+    return {
+        navigate: (path: string) => {
+            dispatch(push(path));
+        }
+    }
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(MainPage);
+

@@ -13,7 +13,7 @@ devConfig.entry = [
 	'./src/index'
 ];
 
-devConfig.devtools = "source-map";
+devConfig.devtool = "source-map";
 
 devConfig.debug = true;
 
